@@ -1,0 +1,24 @@
+<div>
+  <form #form="ngForm" class="mb-4" autocomplete="off" (submit)="onSubmit(form)">
+
+    <!-- <span><b> Registration </b></span> -->
+
+    <div class="form-group">
+      <input class="form-control" type="text" #Matric="ngModel" name="UserName" [(ngModel)]="formModel.UserName"
+        placeholder="UserName" required>
+        
+    </div>
+      <div class="form-group">
+        <input type="password" class="form-control" #Password="ngModel" name="Password"
+          [(ngModel)]="formModel.Password" placeholder="Password" required>
+
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-8 offset-md-2">
+          <button type="submit" class="btn btn-lg btn-block" [disabled]="form.invalid"
+            style="background-color: #f7471b">Log In</button>
+
+        </div>
+      </div>
+  </form>
+</div>

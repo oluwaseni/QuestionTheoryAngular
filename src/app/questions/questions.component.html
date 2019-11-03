@@ -1,0 +1,22 @@
+
+<table class="table table-hover table-bordered table-striped text-center">
+        <thead>
+            <tr>
+                <th>S/N</th>
+                <th>userName</th>
+                <th>Matric</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let property of service.list"  (click)="getMarks(27)">
+            <!-- <td (click)="populateForm(pd)">{{pd.Username}}</td> -->
+            <td hidden (click)="populateForm(property.propertyId)">{{property.id}}</td>
+            <td>{{1}}</td>
+            <td>{{property.userName}}</td>
+            <td>{{property.matric}}</td>
+            <td>
+                <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pd.CardId)"></i>
+            </td>
+        </tr>
+        </tbody>
+    </table>

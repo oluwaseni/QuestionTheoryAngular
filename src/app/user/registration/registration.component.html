@@ -1,0 +1,48 @@
+<div>
+    <form [formGroup]="service.formModel" (submit)="onSubmit()">
+
+        <!-- <span><b> Registration </b></span> -->
+            <div class="form-group required">
+                    <!-- <label>Username</label> -->
+                    <input type="text" class="form-control" formControlName="UserName" placeholder="UserName">
+                    <label class="text-danger" *ngIf="service.formModel.get('UserName').touched && service.formModel.get('UserName').errors?.required">
+                        This field is required
+                    </label>
+                </div>
+            <div class="form-group required">
+                    <!-- <label>Matric Number</label> -->
+                    <input type="text" class="form-control" formControlName="Matric" placeholder="Matric Number">
+                    <label class="text-danger" *ngIf="service.formModel.get('Matric').touched && service.formModel.get('Matric').errors?.required">
+                        This field is required
+                    </label>
+                </div>
+                <div formGroupName="Passwords">
+            <div class="form-group required">
+                    <!-- <label>Password</label> -->
+                    <input type="password" class="form-control" formControlName="Password" placeholder="Password">
+                    <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.required">
+                        This field is required
+                    </label>
+                    <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.minlength">
+                        Minimum of 4 characters
+                    </label>
+                  </div>
+                  <div class="form-group" required>
+                    <input type="password" class="form-control" formControlName="ConfirmPassword"  placeholder="ConfirmPassword">
+                    <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.required">
+                        This field is required
+                    </label>
+                    <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.passwordMismatch">
+                        Passwords must match
+                    </label>
+                  </div>
+            </div>
+
+                <div class="form-row">
+                        <div class="form-group col-md-8 offset-md-2">
+                            <button type="submit" class="btn btn-lg btn-block" [disabled]= "!service.formModel.valid"  style="background-color: #f7471b">Register</button>
+                            
+                        </div>
+                    </div>
+    </form>
+</div>

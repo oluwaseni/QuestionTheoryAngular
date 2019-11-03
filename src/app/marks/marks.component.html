@@ -1,0 +1,25 @@
+
+<table class="table table-hover table-bordered table-striped text-center">
+    <thead>
+        <tr>
+            <th>Question No:</th>
+            <th>Answer</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let property of len; let i = index" >
+        <!-- <td (click)="populateForm(pd)">{{pd.Username}}</td> -->
+        <td>{{i+1}}</td>
+        <td>{{property.myQuestionsId}}</td>
+        <td>{{property.ans}}<input hidden [(ngModel)]="answer"></td>
+        <td>
+
+            <!-- {{property.ans + property.ans}} -->
+            <!-- <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pd.CardId)"></i> -->
+        </td>
+    </tr>
+    <tr *ngFor="let mark of service.list">
+        <td>{{mark.ans + mark.ans}}</td>
+    </tr>
+    </tbody>
+</table>

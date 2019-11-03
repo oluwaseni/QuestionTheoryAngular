@@ -1,0 +1,45 @@
+
+<!-- /////////////////////////////////////////////// -->
+<div>
+
+    <div class="card m-3 p-2"  style="border-radius: 15px; box-shadow: #7e7b7b 2px 1px 2px 1px; min-height:500px;">
+            
+            <div class="card-header" *ngIf="info" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                    <span class="name"> Question: </span>
+                    <span class="number"> {{info.id}}</span>
+                    <button style="position: absolute; right:20px; border-top-right-radius: 5px;" class="btn right btn-danger right my-2 my-sm-0" (click)="onLogout()">Logout</button>
+                    
+                </div>
+        <div class="row pt-3 pb-3" >
+                    <div  *ngIf="info" class="col-sm-5 pl-4"> <span class="questions">{{info.question}}</span></div>  
+                    <div class="col-sm-7">
+
+    <form [formGroup]="service.formMode" (submit)="onSubmit()">                            
+                                    <div class="form-group required">
+                                            <!-- <label>Username</label> -->
+                                            <!-- <input  *ngIf="UserDetails" type="text" class="form-control" formControlName="Matric" [value]="UserDetails.matric" name="matric" [(ngModel)]="UserDetails.matric" value="{{UserDetails.matric}}"> -->
+                                            <input *ngIf="info" type="hidden" class="form-control" name="MyQuestionId" formControlName="MyQuestionsId" placeholder="MyQuestionsId"  [(ngModel)]="info.id" [value]="info.id">
+                                            <input *ngIf="UserDetails" type="hidden" class="form-control" name="Matric" formControlName="Matric" placeholder="Matric"  [(ngModel)]="UserDetails.matric" [value]="UserDetails.matric">
+                                            <input *ngIf="UserDetails" type="hidden" class="form-control" name="UserId" formControlName="UserId" placeholder="UserId"  [(ngModel)]="UserDetails.id" [value]="UserDetails.id">
+                                            <!-- <input  *ngIf="UserDetails" type="hidden" class="form-control" formControlName="UserId" placeholder="UserId"> -->
+                                            
+                                        </div>
+                        
+                                        <div class="form-group">
+                                                <textarea class="form-control" formControlName="Answers" placeholder="Answers"
+                                                 cols="90" rows="10" class="form-group ml-2" required></textarea>
+                                            </div>
+                                    <span style="color: #f7471b">Note:</span> Once you submit, you can't come back to edit.
+                                    <!-- <input type="button" value="Submit Answer" class="form-group btn myButton pl-3 pr-3" > -->
+                                    <button type="submit"  [disabled]= "!service.formMode.valid"  class="btn myButton pl-3 pr-3" >
+                                            Submit Answer</button>
+                                </form>
+                    </div> 
+                    <!-- <span *ngIf="UserDetails">{{UserDetails.matric}}</span>  -->
+            </div>
+
+        <span *ngIf="UserDetails">{{UserDetails.matric}}</span> 
+    </div>
+    
+
+</div>

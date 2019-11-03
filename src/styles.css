@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+.link{
+    font-size: 20px;
+    color: #733747;
+    cursor: pointer;
+}
+
+.link:active::after{
+    border: none;
+    box-decoration-break: none;
+}
+
+.number{
+
+    font-size: 190%;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+}
+
+.name{
+    font-size: 200%;
+    font-weight: bolder;
+    color: #f7471b
+}
+
+.questions{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #555353;
+}
+
+.myButton{
+    background-color: #f7471b !important;
+    color: #ffffff;
+    float: right;
+    margin-right:30px;
+    cursor: pointer;
+    /* box-shadow: #555353 1px 1px 0px 1px; */
+}
+
+.letContain{
+    position: relative;
+    width: 90%;
+    margin: auto;
+    background-color: #fffefe;
+    /* background-color: #ececec; */
+    min-height: 600px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 2px 2px #555353;
+
+}
