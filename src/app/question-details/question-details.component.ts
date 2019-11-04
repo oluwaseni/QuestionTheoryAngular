@@ -64,8 +64,13 @@ export class QuestionDetailsComponent implements OnInit {
     }
 
     nextQuestion(id){
+      if(id <= 3){
       this.router.navigate(['/quest/'+ id]);
       location.reload(true);
+    }
+      else{
+      this.router.navigate(['/questions']);
+    }
 
     }
 
@@ -74,10 +79,7 @@ export class QuestionDetailsComponent implements OnInit {
       
     this.service.postAnswers().subscribe(
       res =>{
-        // if(res != null && res != undefined)
-        // console.log(res);
         this.toaster.success("Answer Submitted Successfully", "Theory Based");
-        // this.service.refreshList();
         this.resetForm(form);
         this.nextQuestion(this.currentId)
         window.location.replace('/quest/'+ this.currentId)
@@ -90,6 +92,9 @@ export class QuestionDetailsComponent implements OnInit {
     )
     }
 
-
+    onLogout(){
+      localStorage.removeItem('token');
+      this.router.navigate(['/user/login']);
+    }
 
 }

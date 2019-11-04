@@ -18,13 +18,13 @@ export class MarksComponent implements OnInit {
    no: number[] = [1,2,3];
    mark = 0;
   ngOnInit() {
-    let id = +this.activatedRoute.snapshot.paramMap.get('id');
+    let id = +this.activatedRoute.snapshot.paramMap.get('id'); 
 
  
     this.service.getMark(id)
     console.log(this.service.getMark(id))
-    this.len = (this.service.getMark(id))
-    console.log(this.len)
+    console.log(this.service.getMarks(id))
+    
     this.lognumber()
     // this.total()
    
