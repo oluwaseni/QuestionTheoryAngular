@@ -31,7 +31,7 @@ export class QuestionsComponent implements OnInit {
   }
 
   getMarks(id){
-    this.router.navigate(['/marks/'+ id]);
+    this.router.navigate(['admin/marks/'+ id]);
   }
 
  

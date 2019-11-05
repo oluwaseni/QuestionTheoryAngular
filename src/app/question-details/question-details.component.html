@@ -4,9 +4,9 @@
 
     <div class="card m-3 p-2"  style="border-radius: 15px; box-shadow: #7e7b7b 2px 1px 2px 1px; min-height:500px;">
             
-            <div class="card-header" *ngIf="info" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+            <div class="card-header" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
                     <span class="name"> Question: </span>
-                    <span class="number"> {{info.id}}</span>
+                    <span  *ngIf="info" class="number"> {{info.id}}</span>
                     <button style="position: absolute; right:20px; border-top-right-radius: 5px;" class="btn right btn-danger right my-2 my-sm-0" (click)="onLogout()">Logout</button>
                     
                 </div>

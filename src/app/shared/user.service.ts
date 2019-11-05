@@ -3,14 +3,18 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { element } from 'protractor';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
-  constructor(private fb:FormBuilder, private http: HttpClient) { }
+  value:any;
+  sum: any;
+  constructor(private fb:FormBuilder, private http: HttpClient) {
+    // this.add(this.list)
+   }
   // formModel?: any ={}
 
   readonly baseURI = "http://localhost:59269/api";
@@ -93,15 +97,18 @@ export class UserService {
   }
 
   getMark(id){
+    
     return this.http.get(this.baseURI+ `/Answers/${id}`)
     .toPromise()
     .then(res => this.list = res as any[]);
+    
   }
 
   getMarks(id): Observable<any>
   {
     let rest = this.http.get<any>(this.baseURI+ `/Answers/${id}`)
-    console.log(rest)
+    // console.log(rest);
+    
     return rest
 
     .pipe(
@@ -111,7 +118,14 @@ export class UserService {
     ;
   }
   
-
+ add(list) {
+   this.value = list;
+   console.log(this.value)
+   for(let j=0;j<list.length;j++){  
+    this.sum+= this.value[j].ans 
+    console.log(this.sum)
+    }  
+ }
   
   postAnswer(){
     // console.log(this.formData)
@@ -188,11 +202,25 @@ export class UserService {
   
 
  getUserProfile(){
-   var tokenHeader = new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('token')})
-   return this.http.get(this.baseURI+'/UserProfile', {headers:tokenHeader});
+  //  var tokenHeader = new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('token')})
+   return this.http.get(this.baseURI+'/UserProfile')//, {headers:tokenHeader});
  }
 
 
+roleMatch(allowedRoles): boolean{
+  var isMatch = false;
+  var payLoad = JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));
+  var userRoles = payLoad.role;
+  allowedRoles.forEach(element =>{
+    if(userRoles == element){
+      isMatch = true;
+      return false;
+    }
 
+
+  });
+  return isMatch;
+
+}
 
 }

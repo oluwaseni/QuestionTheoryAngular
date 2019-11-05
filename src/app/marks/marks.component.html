@@ -8,14 +8,14 @@
         </tr>
     </thead>
     <tbody>
-    <!-- <tr *ngFor="let property of service.learn; let i = index" >
+    <tr *ngFor="let property of service.list; let i = index" >
         <td>{{i+1}}</td>
         <td>{{property.myQuestionsId}}</td>
-        <td>{{property.ans}}<input hidden [(ngModel)]="answer"></td>
-    </tr> -->
+        <td>{{property.ans}}</td>
+    </tr>
     <td>{{learn}}</td>
-    <!-- <tr *ngFor="let mark of service.list">
-        <td>{{mark.ans + mark.ans}}</td>
-    </tr> -->
+ <tr>
+     <td>{{service.sum}}</td>
+ </tr>
     </tbody>
 </table>

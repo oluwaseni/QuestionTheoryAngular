@@ -8,10 +8,10 @@
             </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let property of service.list"  (click)="getMarks(2)">
+        <tr *ngFor="let property of service.list; let i = index "  (click)="getMarks(1)">
             <!-- <td (click)="populateForm(pd)">{{pd.Username}}</td> -->
             <td hidden (click)="populateForm(property.propertyId)">{{property.id}}</td>
-            <td>{{1}}</td>
+            <td>{{i+1}}</td>
             <td>{{property.userName}}</td>
             <td>{{property.matric}}</td>
             <td>

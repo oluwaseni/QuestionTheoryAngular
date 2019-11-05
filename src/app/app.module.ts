@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
 import { ToastrModule } from 'ngx-toastr';
@@ -17,6 +17,9 @@ import { HomeComponent } from './home/home.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { QuestionDetailsComponent } from './question-details/question-details.component';
 import { MarksComponent } from './marks/marks.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { DoneComponent } from './done/done.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { MarksComponent } from './marks/marks.component';
     HomeComponent,
     QuestionsComponent,
     QuestionDetailsComponent,
-    MarksComponent
+    MarksComponent,
+    AdminPanelComponent,
+    DoneComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,11 @@ import { MarksComponent } from './marks/marks.component';
     BrowserAnimationsModule,
     FormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

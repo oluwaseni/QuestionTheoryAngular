@@ -1,0 +1,16 @@
+<div class="letContain p-2 mt-5">
+  <div class="card-header mb-3"
+    style="position: relative; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+
+    <button style="position: relative; left:1px; border-top-left-radius: 5px;"
+      class="btn right btn-danger right my-2 my-sm-0" (click)="onLogout()">Logout</button>
+    <div style="position: relative; float:right;">
+      <button style="background-color: #ffffff; color: #f7471b" class="btn btn-default" (click)="addQuestion()">Add Questions</button>
+
+      <button style="background-color: #ffffff; margin-left: 2px" class="btn btn-default" (click)="checkMarks()">Check Marks</button>
+    </div>
+  </div>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
