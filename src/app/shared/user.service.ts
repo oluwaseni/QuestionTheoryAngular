@@ -20,6 +20,7 @@ export class UserService {
   readonly baseURI = "http://localhost:59269/api";
   formData?: any ={}
   list: any[];
+  mark:any;
   UserDetails: any;
   UserDetail?: any ={};
 
@@ -174,18 +175,11 @@ export class UserService {
 
   }
 
-  
-
-  
-
-
   postQuestions(){
 
     return this.http.post(this.baseURI+'/Questions',this.formData);
 
   }
-  
-  
   // Error handling
   errorHandl(error) {
     let errorMessage = '';
@@ -200,12 +194,10 @@ export class UserService {
     return throwError(errorMessage);
  }
   
-
  getUserProfile(){
   //  var tokenHeader = new HttpHeaders({'Authorization':'Bearer '+localStorage.getItem('token')})
    return this.http.get(this.baseURI+'/UserProfile')//, {headers:tokenHeader});
  }
-
 
 roleMatch(allowedRoles): boolean{
   var isMatch = false;
@@ -222,5 +214,19 @@ roleMatch(allowedRoles): boolean{
   return isMatch;
 
 }
+
+getTotal() {
+  let total = 0;
+  for (var i = 0; i < this.list.length; i++) {
+      if (this.list[i].ans) {
+          total += this.list[i].ans;
+          this.mark = total;
+      }
+  }
+  console.log(this.mark)
+  return total;
+}
+
+
 
 }

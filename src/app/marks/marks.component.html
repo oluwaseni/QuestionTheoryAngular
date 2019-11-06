@@ -8,14 +8,25 @@
         </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let property of service.list; let i = index" >
+    <tr *ngFor="let property of service.list | calculate:ans; let i = index;" >
         <td>{{i+1}}</td>
         <td>{{property.myQuestionsId}}</td>
         <td>{{property.ans}}</td>
     </tr>
-    <td>{{learn}}</td>
- <tr>
-     <td>{{service.sum}}</td>
- </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td *ngIf="service.list">Total: <b>{{service.getTotal()}} </b></td></tr>
+
+   
     </tbody>
 </table>
+<!-- 
+    <div    *ngFor="let item of service.list | calculate;let last=last;let sum=ngForOf.reduce((a,b)=>a+b,0)" >
+     {{item.my}}
+     <div *ngIf="last">{{sum}} </div>
+</div>
+<div    *ngFor="let item of records | yourfilterChain;let last=last;let sum=ngForOf.reduce((a,b)=>a+b,0)" >
+    {{item}}
+    <div *ngIf="last">{{sum}} </div>
+</div> -->

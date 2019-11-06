@@ -20,6 +20,7 @@ import { MarksComponent } from './marks/marks.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { DoneComponent } from './done/done.component';
+import { CalculatePipe } from './calculate.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DoneComponent } from './done/done.component';
     QuestionDetailsComponent,
     MarksComponent,
     AdminPanelComponent,
-    DoneComponent
+    DoneComponent,
+    CalculatePipe
   ],
   imports: [
     BrowserModule,

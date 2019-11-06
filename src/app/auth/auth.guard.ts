@@ -21,7 +21,7 @@ constructor(private router:Router, private service:UserService) {}
         if(roles){
           if(this.service.roleMatch(roles)) return true;
           else{
-            this.router.navigate(['/quest/:1']);
+            this.router.navigate(['/quest/1']);
             return false;
           }
         }

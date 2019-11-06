@@ -17,7 +17,8 @@ export class MarksComponent implements OnInit {
    len = null;
    no: number[] = [1,2,3];
    mark: any;
-   private sum=0;  
+   items: any[];
+  //  private sum=0;  
   private value; 
   ngOnInit() {
     let id = +this.activatedRoute.snapshot.paramMap.get('id'); 
@@ -25,22 +26,34 @@ export class MarksComponent implements OnInit {
  
     this.service.getMark(id)
     console.log(this.service.getMark(id))
-    this.mark = this.service.getMark(id);
-    console.log(this.mark)
-    this.addW(this.mark)
-    // console.log(this.service.getMarks(id))
- 
-
+    console.log(this.service.list);
+    if(this.service.list != null){
+      this.getTotal()
+    }
+    
+    
     
   }
 
-  addW(data){  
-    this.value=data[0]  
-    for(let j=0;j<data.length;j++){  
-         this.sum =this.sum + this.value[j].ans
-         } 
-         console.log(data.length) 
-  }  
+  // addW(data){  
+  //   this.value=data[0]  
+  //   for(let j=0;j<data.length;j++){  
+  //        this.sum =this.sum + this.value[j].ans
+  //        } 
+  //        console.log(this.sum) 
+  // }  
+
+  getTotal() {
+    let total = 0;
+    for (var i = 0; i < this.service.list.length; i++) {
+        if (this.service.list[i].ans) {
+            total += this.service.list[i].ans;
+            this.mark = total;
+        }
+    }
+    console.log(this.mark)
+    return total;
+}
 
   total(){
     this.len.forEach((marks) =>{
